@@ -1,0 +1,31 @@
+
+
+ctsocket
+=========
+
+JTSocket is part of the Terca Java Libraries.
+Terca Java Sockets provide a very basic TCP server and client.
+It uses a variety of defaults in order to simplify usage.
+It is not designed to be multithreaded as this time.
+
+License
+=======
+
+Copyright 2016 Carter Turnbaugh
+
+This file is part of Terca Java Sockets.
+
+Terca Java Sockets is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Terca Java Sockets is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Terca Java Sockets.  If not, see <http://www.gnu.org/licenses/>.
+
+
