@@ -17,28 +17,20 @@
   along with Terca Java Sockets.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import com.tercatech.jtsocket.JTServerSecure;
+import com.tercatech.jtsocket.JTSocketSecure;
 import java.lang.Exception;
+import java.util.Arrays;
 
-public class Server{
+public class Secure{
 
 	public static void main(String[] args){
 
 		try{
-			JTServerSecure server = new JTServerSecure(4440, "asdfasdfasdfasdf");
-			server.create();
+			JTSocketSecure server = new JTSocketSecure("asdfasdfasdfasdf");
 
-			server.getConnection();
+			String ciphertext = server.encrypt("Hello how are you today. Hello how are you todayHello how are you todayHello how are you todayHello how are you todayHello how are you todayHello how are you todayHello how are you todayHello how are you todayHello how are you todayHello how are you todayHello how are you todayHello how are you today");
 
-			server.cWrite("This is some more data");
-
-			System.out.println(server.cRead());
-			server.sWrite("import com.tercatech.jtsocket.JTServer; public static void main(String[] args){}");
-
-			System.out.println(server.sRead());
-
-			server.cClose();
-			server.serverClose();
+			System.out.println(server.decrypt(ciphertext));
 		}
 		catch(Exception e){
 			e.printStackTrace();
