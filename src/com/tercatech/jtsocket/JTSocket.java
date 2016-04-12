@@ -55,14 +55,14 @@ public abstract class JTSocket {
 			reader.read(buffer, 0, JTSOCKET_DATASIZE + 1);
 			byte[] trimmedBuffer = Arrays.copyOfRange(buffer, 1, ((int) (0xff & buffer[0])) + 1);
 			for(byte b : trimmedBuffer) data.append((char) b);
-			if((char) buffer[0] < JTSOCKET_DATASIZE) reading = false;
+			if((int) (0xff & buffer[0]) < JTSOCKET_DATASIZE) reading = false;
 		}
 		return data.toString();
 	}
 
 	public void cWrite(String data) throws IOException{
 
-		if(data.length() > JTSOCKET_DATASIZE){
+		if(data.length() >= JTSOCKET_DATASIZE){
 			StringBuilder tmpData = new StringBuilder(data);
 			while(tmpData.length() > 0){
 				String temp = tmpData.substring(0, Math.min(JTSOCKET_DATASIZE, tmpData.length()));
@@ -73,6 +73,7 @@ public abstract class JTSocket {
 				for(int i = 1; i < buffer.length; i++) buffer[i] = (byte) dataArray[i-1];
 				writer.write(buffer, 0, buffer.length);
 				writer.flush();
+				if(tmpData.length() == 0 && temp.length() == JTSOCKET_DATASIZE) tmpData.append('\0');
 			}
 		}
 		else{
