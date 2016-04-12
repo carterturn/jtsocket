@@ -1,4 +1,4 @@
 #!/bin/bash
 
-mkdir bin
-javac -d bin/ $(find src/ -name *.java)
+[ -d bin ] || mkdir bin
+javac -d bin/ -cp "/usr/share/java/bcprov.jar" $(find src/ -name *.java)
