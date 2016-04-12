@@ -25,17 +25,16 @@ public class Server{
 	public static void main(String[] args){
 
 		try{
-			JTServerSecure server = new JTServerSecure(4440, "asdfasdfasdfasdf");
+			JTServerSecure server = new JTServerSecure(5552, "passwordpassword");
 			server.create();
 
 			server.getConnection();
 
-			server.cWrite("This is some more data");
-
 			System.out.println(server.cRead());
-			server.sWrite("import com.tercatech.jtsocket.JTServer; public static void main(String[] args){}");
+			server.cWrite("This is some more dataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 
 			System.out.println(server.sRead());
+			server.sWrite("import com.tercatech.jtsocket.JTServer; public static void main(String[] args){}");
 
 			server.cClose();
 			server.serverClose();
