@@ -25,7 +25,7 @@ public class Server{
 	public static void main(String[] args){
 
 		try{
-			JTServerSecure server = new JTServerSecure(5552, "passwordpassword");
+			JTServerSecure server = new JTServerSecure(5553, "passwordpassword");
 			server.create();
 
 			server.getConnection();

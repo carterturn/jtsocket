@@ -24,7 +24,7 @@ public class Client{
 
 	public static void main(String[] args){
 		try{
-			JTClientSecure client = new JTClientSecure("127.0.0.1", 5554, "passwordpassword");
+			JTClientSecure client = new JTClientSecure("127.0.0.1", 5553, "passwordpassword");
 
 			client.create();
 
