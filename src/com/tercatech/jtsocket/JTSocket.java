@@ -53,7 +53,8 @@ public abstract class JTSocket {
 		while(reading){
 			byte[] buffer = new byte[JTSOCKET_DATASIZE + 1];
 			reader.read(buffer, 0, JTSOCKET_DATASIZE + 1);
-			data.append(new String(Arrays.copyOfRange(buffer, 1, buffer.length)));
+			byte[] trimmedBuffer = Arrays.copyOfRange(buffer, 1, ((int) (0xff & buffer[0])) + 1);
+			for(byte b : trimmedBuffer) data.append((char) b);
 			if((char) buffer[0] < JTSOCKET_DATASIZE) reading = false;
 		}
 		return data.toString();
@@ -68,7 +69,8 @@ public abstract class JTSocket {
 				tmpData.delete(0, Math.min(JTSOCKET_DATASIZE, tmpData.length()));
 				byte[] buffer = new byte[temp.length() + 1];
 				buffer[0] = (byte) temp.length();
-				System.arraycopy(temp.getBytes(), 0, buffer, 1, temp.getBytes().length);
+				char[] dataArray = temp.toCharArray();
+				for(int i = 1; i < buffer.length; i++) buffer[i] = (byte) dataArray[i-1];
 				writer.write(buffer, 0, buffer.length);
 				writer.flush();
 			}
@@ -76,7 +78,8 @@ public abstract class JTSocket {
 		else{
 			byte[] buffer = new byte[data.length() + 1];
 			buffer[0] = (byte) data.length();
-			System.arraycopy(data.getBytes(), 0, buffer, 1, data.getBytes().length);
+			char[] dataArray = data.toCharArray();
+			for(int i = 1; i < buffer.length; i++) buffer[i] = (byte) dataArray[i-1];
 			writer.write(buffer, 0, buffer.length);
 			writer.flush();
 		}
